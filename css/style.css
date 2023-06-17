@@ -71,7 +71,7 @@ img {
 
 @media (min-width: 600px) {
   .info-title {
-    font-size: 2.5rem; 
+    font-size: 2.8rem; 
   }
 }
 
@@ -95,6 +95,13 @@ img {
    Layout 
 ================= */ 
 
+/* General */ 
+
+.container {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
 /* Header */ 
 
 header {
@@ -105,13 +112,19 @@ header {
 
 @media (min-width: 600px) {
   header {
-    padding: unset;
+    padding: 1.5em 0 2em;
     border-bottom: 1px solid black;
   }  
 }
 
 .logo {
   margin-top: -3px;
+}
+
+@media (min-width: 600px) {
+  .logo {
+    margin-right: 3.4em;
+  }
 }
 
 .account-avatar {
@@ -132,6 +145,12 @@ header {
   margin-right: 1.3em;
 }
 
+@media (min-width: 600px) {
+  .shopping-cart-icon {
+    margin-right: 2.8em;
+  }
+}
+
 /* Nav */ 
 
 .nav-list {
@@ -144,6 +163,7 @@ header {
   .nav-list {
     display: flex;
     flex-direction: row;
+    gap: 2em;
   }
 
   .mobile-menu, .close-btn {
@@ -159,15 +179,21 @@ header {
 
 /* Main */ 
 
-.container {
+main {
   display: flex;
   flex-direction: column;
 }
 
+main.container {
+  margin-bottom: 3em;
+}
+
 @media (min-width: 600px) {
-  .container {
+  main {
     flex-direction: row;
     align-items: center;
+    padding: 5.5em 3em 0 3em;
+    gap: 7.5em;
   }
 }
 
@@ -178,13 +204,20 @@ header {
   position: relative;
 }
 
+@media (min-width: 600px) {
+  .slideshow-image {
+    margin-bottom: 2.2em;
+  }
+}
+
 .slideshow-product {
   display: none;
 }
 
 @media (min-width: 600px) {
   .slideshow-product {
-    max-width: 470px;
+    max-width: 450px;
+    border-radius: 15px;
   }
 }
 
@@ -193,7 +226,7 @@ header {
 }
 
 .slideshow-thumbnails {
-  width: 470px;
+  width: 450px;
   display: flex;
   justify-content: space-between;
 }
@@ -201,6 +234,7 @@ header {
 .slideshow-thumbnail {
   width: 90px;
   height: 90px;
+  border-radius: 10px;
 }
 
 @media (max-width: 599px) {
@@ -243,11 +277,18 @@ header {
 @media (min-width: 600px) {
   .info {
     padding: unset;
+    margin-top: -1em;
   }
 }
 
 .info-title {
   margin: 0.7em 0;
+}
+
+@media (min-width: 600px) {
+  .info-title {
+    margin: 0.5em 0 0.7em;
+  }
 }
 
 .info-prices {
@@ -260,6 +301,8 @@ header {
   .info-prices {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.5em;
+    margin-bottom: 2em;
   }
 }
 
@@ -310,13 +353,23 @@ header {
 }
 
 @media (min-width: 600px) {
-  .info-cart-toggle, .cart-add-to-btn {
-    width: unset;
+  .info-cart-toggle {
+    width: 160px;
+    flex-shrink: 0;
   }
 }
 
 .info-cart-toggle > *, .cart-add-to-btn {
   padding: 1em 1.5em;
+}
+
+@media (min-width: 600px) {
+  .cart-toggle-value {
+    padding: 0;
+  }
+  .cart-toggle-minus, .cart-toggle-plus {
+    padding: 1em;
+  }
 }
 
 .cart-add-to-btn {
@@ -331,14 +384,23 @@ header {
 }
 
 /* Footer */ 
-footer {
-  margin-top: 3em;
-}
+
 /* note: this attribution is a default class */ 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
-
+@media (min-width: 600px) {
+  body { 
+    min-height:100vh; 
+    position:relative; 
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 
 /* after finishing the css for this, copy this code into scss format. 
   this will be the start of me using scss (in recent years). 
