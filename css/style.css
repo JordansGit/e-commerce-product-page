@@ -49,6 +49,7 @@ img {
 
 .info-body {
   font-weight: 400;
+  line-height: 1.4;
 }
 
 @media (min-width: 600px) {
@@ -65,6 +66,7 @@ img {
 
 .info-title {
   font-size: 1.7rem; 
+  line-height: 1.1;
 }
 
 @media (min-width: 600px) {
@@ -74,7 +76,7 @@ img {
 }
 
 .info-discounted-price {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .info-discounted-percent {
@@ -98,7 +100,6 @@ img {
 header {
   display: flex;
   align-items: center;
-  width: 100vw;
   padding: 1em 1.5em;
 }
 
@@ -125,6 +126,10 @@ header {
 
 .shopping-cart-icon {
   margin-left: auto;
+}
+
+.mobile-menu, .shopping-cart-icon {
+  margin-right: 1.3em;
 }
 
 /* Nav */ 
@@ -179,7 +184,7 @@ header {
 
 @media (min-width: 600px) {
   .slideshow-product {
-    width: 470px;
+    max-width: 470px;
   }
 }
 
@@ -208,13 +213,18 @@ header {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  background: white;
+  padding: 0.7em 0.9em;
+  border-radius: 50%;
 }
 
 .slideshow-prev {
   left: 0.75em;
+  padding-right: 1em;
 }
 .slideshow-next {
   right: 0.75em;
+  padding-left: 1em;
 }
 
 
@@ -236,9 +246,14 @@ header {
   }
 }
 
+.info-title {
+  margin: 0.7em 0;
+}
+
 .info-prices {
   display: flex;
   align-items: center;
+  margin: 1.5em 0 1.2em;
 }
 
 @media (min-width: 600px) {
@@ -254,6 +269,12 @@ header {
   gap: 0.7em;
 }
 
+.info-discounted-percent {
+  background: lightblue;
+  padding: 4px 8px;
+  border-radius: 7px;
+}
+
 .info-original-price {
   margin-left: auto;
 }
@@ -262,9 +283,17 @@ header {
   .info-original-price {
     margin-left: unset;
   }
+}
 
+.info-shopping-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media (min-width: 600px) {
   .info-shopping-cart {
-    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -277,6 +306,7 @@ header {
 
 .info-cart-toggle, .cart-add-to-btn {
   width: 100%;
+  border-radius: 15px;
 }
 
 @media (min-width: 600px) {
@@ -285,7 +315,25 @@ header {
   }
 }
 
+.info-cart-toggle > *, .cart-add-to-btn {
+  padding: 1em 1.5em;
+}
+
+.cart-add-to-btn {
+  border: none;
+  outline: none;
+}
+
+.cart-add-to-img {
+  display: inline-block;
+  margin-bottom: -3px;
+  margin-right: 1em;
+}
+
 /* Footer */ 
+footer {
+  margin-top: 3em;
+}
 /* note: this attribution is a default class */ 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
