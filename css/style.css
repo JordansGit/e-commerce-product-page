@@ -43,7 +43,7 @@ img {
 
 /* General */ 
 
-.nav-link, .info-company, .info-title, .info-discounted-price, .info-discounted-percent, .info-original-price, .cart-toggle-value, .cart-add-to-btn {
+.nav-link, .info-company, .info-title, .info-discounted-price, .info-discounted-percent, .info-original-price, .cart-toggle-value, .cart-add-to-btn, .cart-title, .cart-empty-text {
   font-weight: 700;
 }
 
@@ -52,7 +52,7 @@ img {
   line-height: 1.4;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 820px) {
   .nav-link {
     font-weight: 400;
   }
@@ -100,6 +100,7 @@ img {
 .container {
   max-width: 1110px;
   margin: 0 auto;
+  position: relative;
 }
 
 @media (min-width: 600px) and (max-width: 1179px) {
@@ -107,6 +108,10 @@ img {
     margin-left: 35px;
     margin-right: 35px;
   }
+}
+
+.hide {
+  display: none !important;
 }
 
 /* Header */ 
@@ -180,8 +185,33 @@ header {
 
 .close-btn {
   align-self: flex-start;
+  margin-bottom: 1.3em;
 }
 
+.nav-open-nav-list {
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  background: var(--white);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 67%;
+  padding-top: 1.5em;
+  padding-left: 1.5em;
+  gap: 1.7em;
+}
+
+.nav-open-body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
 
 
 /* Main */ 
@@ -216,6 +246,50 @@ main.container {
   }
 }
 
+/* Shopping Cart */ 
+
+.shopping-cart {
+  position: absolute;
+  background: white;
+  width: 96%;
+  top: 4.1rem;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 252px;
+  border-radius: 12px;
+  box-shadow: 10px 10px 25px rgba(0,0,0, 0.2);
+}
+
+@media (min-width: 600px) {
+  .shopping-cart {
+    max-width: 360px;
+    left: unset;
+    top: 5.4rem;
+    right: -20px;
+  }
+}
+
+@media (min-width: 1250px) {
+  .shopping-cart {
+    right: -60px;
+  }
+}
+
+.cart-title {
+  padding: 1.3em;
+  border-bottom: 1px solid black;
+}
+
+.cart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 80px);
+}
+
+
 /* Slideshow */ 
 
 .slideshow {
@@ -230,12 +304,22 @@ main.container {
 
 .slideshow-product {
   display: none;
+  height: 80vw;
+  width: 100%;
+  object-fit: cover;
 }
 
 @media (min-width: 600px) {
   .slideshow-product {
     max-width: 450px;
     border-radius: 15px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 820px) {
+  .slideshow-product {
+    height: initial;
   }
 }
 
@@ -434,4 +518,17 @@ main.container {
 
 /* after finishing the css for this, copy this code into scss format. 
   this will be the start of me using scss (in recent years). 
+*/ 
+
+
+/* To Do 
+  css: mobile menu XX
+  css: cart empty - mobile XX
+  css: cart empty - desktop XX
+  fix: slideshow image size XX 
+  css: cart full - mobile 
+  css: cart full - desktop 
+
+  css: colours. 
+
 */ 
