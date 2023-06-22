@@ -674,18 +674,53 @@ This may interfere with trying to do onclick/click events.
   z-index: 2;
 }
 
+.nav-link {
+  position: relative;
+}
 
+@media (min-width: 820px) {
+  .nav-link:hover::after {
+    content: "";
+    position: absolute;
+    top: 65px;
+    border-bottom: 4px solid var(--orange);
+    left: 0;
+    right: 0;
+  }
+}
+
+.slideshow-thumbnail img {
+  border-radius: 10px;
+}
+.slideshow-thumbnail-wrapper {
+  position: relative;
+}
+
+.slideshow-thumbnail-wrapper:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.7;
+  background:var(--white);
+  z-index: 2;
+  border-radius: 10px;
+}
 
 
 /* To Do 
 
 css: colours. XX 
 refectored code XX 
-active states (put active state colors under active states section (not in colors section) 
-
-
+active states (put active state colors under active states section (not in colors section): 
+  thumbnail images 
+  nav link (border bottom) 
 
   SCSS: 
   after finishing the css for this, copy this code into scss format. 
   this will be the start of me using scss (in recent years). 
+
+JS: count increments number (+ shopping cart icon number). 
 */ 
