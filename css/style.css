@@ -47,12 +47,43 @@ img {
   --grayish-blue: hsl(220, 14%, 75%);
   --light-grayish-blue: hsl(223, 64%, 98%);
   --white: hsl(0, 0%, 100%);
-  --black: hsl(0, 0%, 0%); /* Black (with 75% opacity for lightbox background) */  
+  --black-opacity: rgba(0, 0, 0, 0.75); /* Black (with 75% opacity for lightbox background) */  
+
+  --grayish-blue-opacity: rgba(182, 188, 200, 0.5);
 }
+
+
+.info-discounted-percent, .info-company {
+  color: var(--orange);
+}
+
+.info-title, .info-discounted-price, .cart-toggle-value, .cart-total-cost, .nav-link, .cart-title {
+  color: var(--very-dark-blue);
+}
+
+@media (min-width: 820px) {
+  .nav-link {
+    color: var(--dark-grayish-blue);
+  }
+}
+
+.cart-item-text, .info-body, .cart-empty-text {
+  color: var(--dark-grayish-blue);
+}
+
+.info-original-price {
+  color: var(--grayish-blue);
+}
+
+.shopping-cart-icon-count, .cart-checkout-btn, .cart-add-to-btn {
+  color: var(--light-grayish-blue);
+}
+
+
 
 /* General */ 
 
-.nav-link, .info-company, .info-title, .info-discounted-price, .info-discounted-percent, .info-original-price, .cart-toggle-value, .cart-add-to-btn, .cart-title, .cart-empty-text, .cart-checkout-btn {
+.nav-link, .info-company, .info-title, .info-discounted-price, .info-discounted-percent, .info-original-price, .cart-toggle-value, .cart-add-to-btn, .cart-title, .cart-empty-text, .cart-checkout-btn, .cart-total-cost {
   font-weight: 700;
 }
 
@@ -96,11 +127,17 @@ img {
   text-decoration: line-through;
 }
 
+
+
 /* ==============
    Layout 
 ================= */ 
 
 /* General */ 
+
+body {
+  background: var(--white);
+}
 
 .container {
   max-width: 1110px;
@@ -119,6 +156,10 @@ img {
   display: none !important;
 }
 
+.cart-checkout-btn, .shopping-cart-icon-count, .cart-add-to-btn  {
+  background: var(--orange);
+}
+
 /* Header */ 
 
 header {
@@ -130,7 +171,7 @@ header {
 @media (min-width: 600px) {
   header {
     padding: 1.5em 0 2em;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--grayish-blue-opacity);
   }  
 }
 
@@ -145,12 +186,14 @@ header {
 }
 
 .account-avatar {
-  width: 25px;
+  width: 29px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
 }
 
 @media (min-width: 600px) {
   .account-avatar {
-    width: 50px;
+    width: 54px;
   }
 }
 
@@ -170,8 +213,6 @@ header {
 
 .shopping-cart-icon-count {
   font-size: 0.6em;
-  background: orange;
-  color: white;
   border-radius: 15px;
   padding: 2px 7px;
   position: absolute;
@@ -241,7 +282,7 @@ header {
 
 .shopping-cart {
   position: absolute;
-  background: white;
+  background: var(--white);
   width: 96%;
   top: 4.1rem;
   margin: 0 auto;
@@ -270,7 +311,7 @@ header {
 
 .cart-title {
   padding: 1.3em;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--grayish-blue-opacity);
 }
 
 .cart-empty {
@@ -398,7 +439,7 @@ main.container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: white;
+  background: var(--white);
   padding: 0.7em 0.9em;
   border-radius: 50%;
 }
@@ -464,9 +505,9 @@ main.container {
 }
 
 .info-discounted-percent {
-  background: lightblue;
   padding: 4px 8px;
   border-radius: 7px;
+  background: var(--page-orange);
 }
 
 .info-original-price {
@@ -501,7 +542,7 @@ main.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: lightgray;
+  background: var(--light-grayish-blue);
 }
 
 .info-cart-toggle, .cart-add-to-btn {
@@ -522,7 +563,12 @@ main.container {
   }
 }
 
+/* 
 .info-cart-toggle > *, .cart-add-to-btn {
+  padding: 1em 1.5em;
+}*/ 
+
+.cart-toggle-minus, .cart-toggle-value, .cart-toggle-plus, .cart-add-to-btn {
   padding: 1em 1.5em;
 }
 
@@ -540,6 +586,12 @@ main.container {
   margin-bottom: -3px;
   margin-right: 1em;
 }
+
+.cart-add-to-img path {
+  fill: var(--light-grayish-blue);
+}
+
+
 
 /* Footer */ 
 
@@ -560,19 +612,80 @@ main.container {
   }
 }
 
-/* after finishing the css for this, copy this code into scss format. 
-  this will be the start of me using scss (in recent years). 
+
+
+/* Active States */ 
+
+.nav-link, .shopping-cart-icon, .account-avatar, .slideshow-thumbnail, .cart-toggle-minus, .cart-toggle-plus, .cart-add-to-btn, .mobile-menu, .close-btn, .slideshow-prev, .slideshow-next, .cart-checkout-btn, .cart-delete {
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: var(--very-dark-blue);
+}
+
+/* 
+  nav-link:hover - border-bottom: color: var(--orange);
+  thumbnails:hover - border: color: var(--orange) 
 */ 
+
+.shopping-cart-icon:hover path {
+  fill: var(--very-dark-blue);
+}
+
+.account-avatar:hover {
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+}
+
+.cart-add-to-btn, .cart-checkout-btn {
+  position: relative;
+}
+
+.cart-add-to-btn:hover::before, .cart-checkout-btn:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.3;
+  background:var(--white);
+  z-index: 2;
+  border-radius: 12px;
+}
+
+/* Cart + and - Buttons, need to have bg: white, opacity: 0.3 overlay on hover 
+This may interfere with trying to do onclick/click events. 
+*/ 
+
+.cart-toggle-btns {
+  position: relative
+}
+.cart-toggle-btns:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background: var(--light-grayish-blue);
+  z-index: 2;
+}
+
+
 
 
 /* To Do 
-  css: mobile menu XX
-  css: cart empty - mobile XX
-  css: cart empty - desktop XX
-  fix: slideshow image size XX 
-  css: cart full - mobile XX
-  css: cart full - desktop XX
 
-  css: colours. 
+css: colours. XX 
+refectored code XX 
+active states (put active state colors under active states section (not in colors section) 
 
+
+
+  SCSS: 
+  after finishing the css for this, copy this code into scss format. 
+  this will be the start of me using scss (in recent years). 
 */ 
