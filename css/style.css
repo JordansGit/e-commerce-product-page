@@ -143,10 +143,6 @@ body {
   display: block !important;
 }
 
-.cart-checkout-btn, .shopping-cart-icon-count, .cart-add-to-btn {
-  background: var(--orange);
-}
-
 /* Header */
 header {
   display: flex;
@@ -163,6 +159,7 @@ header .shopping-cart-icon {
   margin-left: auto;
 }
 header .shopping-cart-icon-count {
+  background: var(--orange);
   font-size: 0.6em;
   border-radius: 15px;
   padding: 2px 7px;
@@ -282,10 +279,11 @@ header .account-avatar {
   margin-right: auto;
 }
 .shopping-cart .cart-body .cart-checkout-btn {
+  background: var(--orange);
   width: 100%;
+  border-radius: 12px;
   padding: 1em;
   margin-top: 1.6em;
-  border-radius: 12px;
 }
 
 @media (min-width: 600px) {
@@ -423,17 +421,21 @@ main.container {
   flex-direction: column;
   gap: 1em;
 }
-.info .info-shopping-cart .info-cart-toggle, .info .info-shopping-cart .cart-add-to-btn {
-  width: 100%;
-  border-radius: 12px;
-}
 .info .info-shopping-cart .info-cart-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: var(--light-grayish-blue);
+  width: 100%;
+  border-radius: 12px;
 }
-.info .cart-toggle-minus, .info .cart-toggle-value, .info .cart-toggle-plus, .info .cart-add-to-btn {
+.info .info-shopping-cart .cart-add-to-btn {
+  background: var(--orange);
+  width: 100%;
+  border-radius: 12px;
+  padding: 1em 1.5em;
+}
+.info .cart-toggle-minus, .info .cart-toggle-value, .info .cart-toggle-plus {
   padding: 1em 1.5em;
 }
 .info .cart-add-to-img {
@@ -607,9 +609,20 @@ css: colours. XX
 refectored code XX 
 active states (put active state colors under active states section (not in colors section): XX 
 
-  SCSS: 
-  after finishing the css for this, copy this code into scss format. 
-  this will be the start of me using scss (in recent years). 
+SCSS- change css to scss format: 
+  - do the FCC sass course for a page > implement change in projects. 
+  ... repeat for all pages. 
+
+  variables 
+  nesting 
+  mixins 
+  if else logic 
+  for loops 
+  @each map 
+  @while conditions 
+  partials 
+  extend 
+
 
 JS: count increments number (+ shopping cart icon number). 
 */

@@ -156,10 +156,6 @@ body {
   display: none !important;
 }
 
-.show {
-  display: block;
-}
-
 .cart-checkout-btn, .shopping-cart-icon-count, .cart-add-to-btn  {
   background: var(--orange);
 }

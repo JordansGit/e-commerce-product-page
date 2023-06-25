@@ -160,8 +160,14 @@ body {
   display: block !important;
 }
 
-.cart-checkout-btn, .shopping-cart-icon-count, .cart-add-to-btn  {
+@mixin ctaBtn {
   background: var(--orange);
+  width: 100%;
+  border-radius: 12px;
+}
+
+@mixin shoppingCartPadding {
+  padding: 1em 1.5em;
 }
 
 /* Header */ 
@@ -184,6 +190,7 @@ header {
   }
 
   .shopping-cart-icon-count {
+    background: var(--orange);
     font-size: 0.6em;
     border-radius: 15px;
     padding: 2px 7px;
@@ -320,10 +327,9 @@ header {
     }
 
     .cart-checkout-btn {
-      width: 100%;
+      @include ctaBtn;
       padding: 1em;
       margin-top: 1.6em;
-      border-radius: 12px;
     }
   }
 }
@@ -492,19 +498,22 @@ main.container {
     flex-direction: column;
     gap: 1em;
 
-    .info-cart-toggle, .cart-add-to-btn {
-      width: 100%;
-      border-radius: 12px;
-    }
     .info-cart-toggle {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: var(--light-grayish-blue);
+      width: 100%;
+      border-radius: 12px;
+    }
+    .cart-add-to-btn {
+      @include ctaBtn; 
+      @include shoppingCartPadding;
     }
   }
-  .cart-toggle-minus, .cart-toggle-value, .cart-toggle-plus, .cart-add-to-btn {
-    padding: 1em 1.5em;
+
+  .cart-toggle-minus, .cart-toggle-value, .cart-toggle-plus {
+    @include shoppingCartPadding;
   }
 
   .cart-add-to-img {
@@ -696,12 +705,27 @@ css: colours. XX
 refectored code XX 
 active states (put active state colors under active states section (not in colors section): XX 
 
-  SCSS: 
-  after finishing the css for this, copy this code into scss format. 
-  this will be the start of me using scss (in recent years). 
+SCSS- change css to scss format: 
+  - do the FCC sass course for a page > implement change in projects. 
+  ... repeat for all pages. 
 
+  variables 
+  nesting 
+  mixins 
+  if else logic 
+  for loops 
+  @each map 
+  @while conditions 
+  partials 
+  extend 
+
+  
 JS: count increments number (+ shopping cart icon number). 
 */ 
+
+
+
+
 
 /* Some SCSS Notes: 
 nesting makes it a whole lot more readable. 
@@ -737,3 +761,8 @@ because it's nested in the non-media query ver, the media query ver needs to be 
 but I don't need to do this for .slideshow-thumbnails, with the difference being the media query is (max-width: ...) not min-width
 
 */ 
+
+
+
+
+
