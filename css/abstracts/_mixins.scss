@@ -1,0 +1,32 @@
+/* Mixins */ 
+
+@mixin ctaBtn {
+  background: var(--orange);
+  width: 100%;
+  border-radius: 12px;
+}
+
+@mixin shoppingCartPadding {
+  padding: 1em 1.5em;
+}
+
+@mixin after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0; 
+  bottom: 0; 
+  z-index: 2;
+}
+
+@mixin hover-after($opacity, $bg, $border-radius) {
+  position: relative;
+
+  &:hover::after {
+    @include after;
+    opacity: $opacity;
+    background: $bg;
+    border-radius: $border-radius;
+  }
+}

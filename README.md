@@ -27,7 +27,9 @@ Users should be able to:
 
 - HTML
 - CSS 
+- SCSS 
 - JavaScript 
 
 ### What I learned
 
+SCSS. Nesting code with scss, creating mixins for reusable code, using partials to structure layout. 

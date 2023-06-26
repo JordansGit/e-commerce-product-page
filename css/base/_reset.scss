@@ -1,0 +1,28 @@
+/* Resets */ 
+
+* {
+  box-sizing: border-box;
+}
+
+body, h1, p, ul {
+  margin: 0;
+}
+
+ul, button {
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

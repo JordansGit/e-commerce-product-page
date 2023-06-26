@@ -1,0 +1,119 @@
+/* Info */ 
+
+.info {
+  padding: 1em 1.5em;
+
+  .info-title {
+    margin: 0.7em 0;
+  }
+  .info-prices {
+    display: flex;
+    align-items: center;
+    margin: 1.5em 0 1.2em;
+
+    .info-discounted-price {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+
+      .info-discounted-percent {
+        padding: 4px 8px;
+        border-radius: 7px;
+        background: var(--page-orange);
+      }
+    }
+    .info-original-price {
+      margin-left: auto;
+    }
+  }
+  .info-shopping-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .info-cart-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--light-grayish-blue);
+      width: 100%;
+      border-radius: 12px;
+
+      .cart-toggle-btns {
+        @include hover-after(0.5, var(--light-grayish-blue), initial); 
+      }
+    }
+    .cart-add-to-btn {
+      @include ctaBtn; 
+      @include shoppingCartPadding;
+      @include hover-after(0.3, var(--white), 12px);
+    }
+  }
+
+  .cart-toggle-minus, .cart-toggle-value, .cart-toggle-plus {
+    @include shoppingCartPadding;
+  }
+
+  .cart-add-to-img {
+    display: inline-block;
+    margin-bottom: -3px;
+    margin-right: 1em;
+
+    path {
+      fill: var(--light-grayish-blue);
+    }
+  }  
+}
+
+@media (min-width: 600px) {
+  .info {
+    padding: unset;
+    margin-top: -1em;
+    max-width: 444px;
+
+    .info-title {
+      margin: 0.5em 0 0.7em;
+    }
+    .info-prices {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5em;
+      margin-bottom: 2em;
+
+      .info-original-price {
+        margin-left: unset;
+      }
+    }
+    .info-shopping-cart {
+      .info-cart-toggle {
+        .cart-toggle-value {
+          padding: 0;
+        }
+        .cart-toggle-minus, .cart-toggle-plus {
+          padding: 1em;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 819px) {
+  .info .info-shopping-cart {
+    flex-direction: row;
+
+    .info-cart-toggle {
+      max-width: 220px;
+    }  
+  }
+}
+
+@media (min-width: 1025px) {
+  .info .info-shopping-cart {
+    flex-direction: row;
+
+    .info-cart-toggle {
+      width: 160px;
+      flex-shrink: 0;
+    }
+  }
+}

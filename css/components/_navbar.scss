@@ -1,0 +1,60 @@
+/* Nav */ 
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  display: none;
+
+  .close-btn {
+    align-self: flex-start;
+    margin-bottom: 1.3em;
+  }
+}
+
+@media (min-width: 820px) {
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+  }
+
+  .mobile-menu, .close-btn {
+    display: none;
+  }
+
+  .nav-link {
+    @include hover-after(initial, initial, initial);
+
+    &:hover::after {
+      bottom: unset;
+      top: 65px;
+      border-bottom: 4px solid var(--orange);
+      z-index: unset;
+    }
+  }
+}
+
+.nav-open-nav-list {
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  background: var(--white);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 67%;
+  padding-top: 1.5em;
+  padding-left: 1.5em;
+  gap: 1.7em;
+}
+
+.nav-open-body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}

@@ -1,0 +1,91 @@
+/* ==============
+   Typography 
+================= */ 
+
+* {
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* Colours */ 
+
+.info-discounted-percent, .info-company {
+  color: var(--orange);
+}
+
+.info-title, .info-discounted-price, .cart-toggle-value, .cart-total-cost, .nav-link, .cart-title {
+  color: var(--very-dark-blue);
+}
+
+@media (min-width: 820px) {
+  .nav-link {
+    color: var(--dark-grayish-blue);
+
+    &:hover {
+      color: var(--very-dark-blue);
+    }
+  }
+}
+
+.cart-item-text, .info-body, .cart-empty-text {
+  color: var(--dark-grayish-blue);
+}
+
+.info-original-price {
+  color: var(--grayish-blue);
+}
+
+.shopping-cart-icon-count, .cart-checkout-btn, .cart-add-to-btn {
+  color: var(--light-grayish-blue);
+}
+
+
+
+/* General */ 
+
+.nav-link, .info-company, .info-title, .info-discounted-price, .info-discounted-percent, .info-original-price, .cart-toggle-value, .cart-add-to-btn, .cart-title, .cart-empty-text, .cart-checkout-btn, .cart-total-cost {
+  font-weight: 700;
+}
+
+.info-body {
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@media (min-width: 820px) {
+  .nav-link {
+    font-weight: 400;
+  }
+}
+
+.info-company {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-title {
+  font-size: 1.7rem; 
+  line-height: 1.1;
+}
+
+@media (min-width: 600px) {
+  .info-title {
+    font-size: 2.8rem; 
+  }
+}
+
+.info-discounted-price {
+  font-size: 1.8rem;
+}
+
+.info-discounted-percent {
+  font-size: 1rem;
+}
+
+.info-original-price {
+  text-decoration: line-through;
+}
