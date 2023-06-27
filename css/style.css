@@ -194,6 +194,7 @@ html {
 
 /* Shopping Cart */
 .shopping-cart {
+  display: none;
   position: absolute;
   background: var(--white);
   width: 96%;
@@ -543,6 +544,9 @@ header .shopping-cart-icon-count {
   position: absolute;
   right: 65px;
   top: 12px;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
 }
 header .account-avatar {
   width: 29px;
@@ -645,19 +649,19 @@ The original layout, in case anything messes up:
 /* Cart + and - Buttons, need to have bg: white, opacity: 0.3 overlay on hover 
 This may interfere with trying to do onclick/click events. 
 */
-/* done today: 
-  fixed thumbnails 
-  refactored scss code with mixins and partials.
-
 /* To Do 
+JS: 
+- mobile menu
+- count increments number (+ shopping cart icon number). 
+- ... 
 
+*/
+/* To do on another project: 
 SCSS: 
 - maybe add more variables, @each to map over lists, for loops, if else logic.... But I'm thinking maybe just leave this for another project. 
 - watch this tut, then implement similar changes into my project. 
   https://www.youtube.com/watch?v=aoQ6S1a32j8
 
-
-JS: count increments number (+ shopping cart icon number). 
 */
 /* Some SCSS Notes: 
 nesting makes it a whole lot more readable. 
@@ -690,6 +694,6 @@ because it's nested in the non-media query ver, the media query ver needs to be 
       }
     }
 
-but I don't need to do this for .slideshow-thumbnails, with the difference being the media query is (max-width: ...) not min-width
+I don't need to do this for .slideshow-thumbnails, with the difference being the media query is (max-width: ...) not min-width
 
 *//*# sourceMappingURL=style.css.map */

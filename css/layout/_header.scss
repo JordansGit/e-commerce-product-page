@@ -29,6 +29,7 @@ header {
     position: absolute;
     right: 65px;
     top: 12px;
+    @include prevent-select;
   }
 
   .account-avatar {
