@@ -127,8 +127,6 @@ html {
 /* Components */
 /* Nav */
 .nav-list {
-  display: flex;
-  flex-direction: column;
   display: none;
 }
 .nav-list .close-btn {
@@ -169,6 +167,7 @@ html {
 }
 .nav-open-nav-list {
   display: flex;
+  flex-direction: column;
   position: fixed;
   z-index: 2;
   background: var(--white);

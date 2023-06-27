@@ -1,8 +1,6 @@
 /* Nav */ 
 
 .nav-list {
-  display: flex;
-  flex-direction: column;
   display: none;
 
   .close-btn {
@@ -32,10 +30,15 @@
       z-index: unset;
     }
   }
+
+  .nav-open-nav-list, .nav-open-body {
+    display: none;
+  }
 }
 
 .nav-open-nav-list {
   display: flex;
+  flex-direction: column;
   position: fixed;
   z-index: 2;
   background: var(--white);

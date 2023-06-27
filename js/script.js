@@ -1,9 +1,3 @@
-/*
-mobile menu - add class: 
-  .nav-open-nav-list
-  .nav-open-body
-*/
-
 // toggle shopping cart show/hide onclick 
 let cartIcon = document.querySelector('.shopping-cart-icon');
 let shoppingCart = document.querySelector('.shopping-cart');
@@ -11,6 +5,7 @@ let shoppingCart = document.querySelector('.shopping-cart');
 cartIcon.addEventListener('click', function() {
   shoppingCart.classList.toggle('show');
 })
+
 
 // increment and decrement buttons 
 let plus = document.querySelector('.cart-toggle-plus');
@@ -30,16 +25,33 @@ minus.addEventListener('click', function() {
   displayValue.innerText = value;
 })
 
-/*
-for all my click events that I want to add class display:show and remove it, put all the variables into an array, then use a for loop, then inside that for loop, have the i.addeventlisner(){}; 
-*/ 
+
+// Mobile menu 
+let mobileMenu = document.querySelector('.mobile-menu');
+let closeBtn = document.querySelector('.close-btn');
+let navList = document.querySelector('.nav-list');
+
+mobileMenu.addEventListener('click', function() {
+  navList.classList.add('nav-open-nav-list')
+  document.body.classList.add('nav-open-body')
+})
+
+closeBtn.addEventListener('click', function() {
+  navList.classList.remove('nav-open-nav-list')
+  document.body.classList.remove('nav-open-body')
+})
+
+
+
+
+
+
 
 
 /* To Do 
   shopping cart show/display onclick XX 
   button increment and decrement to change the number value. XX 
-
-  mobile menu show/hide (or maybe I want to do transform instead). 
+  mobile menu show/hide (or maybe I want to do transform instead). XX
 
   slideshow DESKTOP: 
     - remove active class from all thumnbnails + add active class to currently selected thumbnail 
