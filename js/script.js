@@ -43,9 +43,17 @@ closeBtn.addEventListener('click', function() {
 
 
 // Slideshow Desktop 
-let thumbnailList = document.querySelectorAll('.slideshow-thumbnail');
-let slideshowImages = document.querySelectorAll('.slideshow-product');
+const thumbnailList = document.querySelectorAll('.slideshow-thumbnail');
+const slideshowImages = document.querySelectorAll('.slideshow-product');
+let currentSlide = 0;
 
+//function
+let showImage = function() {
+  slideshowImages.forEach(img => img.classList.remove('show'));
+  slideshowImages[currentSlide].classList.add('show');
+}
+
+//event listener 
 thumbnailList.forEach((thumbnail, index) => {
   thumbnail.addEventListener('click', function() {
     // add active class to thumnbail
@@ -53,11 +61,31 @@ thumbnailList.forEach((thumbnail, index) => {
     this.classList.add('active');
 
     // show corresponding slideshow image 
-    slideshowImages.forEach(img => img.classList.remove('show'));
-    slideshowImages[index].classList.add('show');
+    currentSlide = index;
+    showImage();
   })
 })
 
+
+// Slideshow Mobile 
+const next = document.querySelector('.slideshow-next');
+const prev = document.querySelector('.slideshow-prev');
+
+next.addEventListener('click', function() {
+  currentSlide++;
+  if (currentSlide > 3) {
+    currentSlide = 0;
+  }
+  showImage()
+})
+
+prev.addEventListener('click', function() {
+  currentSlide--;
+  if (currentSlide < 0) {
+    currentSlide = 3;
+  }
+  showImage()
+})
 
 
 
@@ -70,8 +98,8 @@ thumbnailList.forEach((thumbnail, index) => {
     - remove active class from all thumnbnails + add active class to currently selected thumbnail XX
     - switch big picture on click of thumbnail. XX
   slideshow MOBILE: 
-    - prev button makes slideshow display prev img. 
-    - next button makes slideshow display next img. 
+    - prev button makes slideshow display prev img. XX
+    - next button makes slideshow display next img. XX
   slideshow modal: 
     - popup modal for big image. 
     - same functionality as desktop slideshow. 
@@ -103,4 +131,9 @@ let slideshowImageUrls = [
 inside the thumbnail event listener add the following (replacing the add/show slideshow image code): 
   slideshowImage[0].src = slideshowImageUrls[index];
  
+-----------------------
+the thumbnail doesn't update the currently selected main image on page load. 
+I can explore this later. either: 
+  reset image current slide to 0 when page goes from 819px or below to 820+px. 
+  or change thumbnail code to update value. 
 */ 
