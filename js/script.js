@@ -1,6 +1,6 @@
 // toggle shopping cart show/hide onclick 
-let cartIcon = document.querySelector('.shopping-cart-icon');
-let shoppingCart = document.querySelector('.shopping-cart');
+const cartIcon = document.querySelector('.shopping-cart-icon');
+const shoppingCart = document.querySelector('.shopping-cart');
 
 cartIcon.addEventListener('click', function() {
   shoppingCart.classList.toggle('show');
@@ -8,9 +8,9 @@ cartIcon.addEventListener('click', function() {
 
 
 // increment and decrement buttons 
-let plus = document.querySelector('.cart-toggle-plus');
-let minus = document.querySelector('.cart-toggle-minus');
-let displayValue = document.querySelector('.cart-toggle-value');
+const plus = document.querySelector('.cart-toggle-plus');
+const minus = document.querySelector('.cart-toggle-minus');
+const displayValue = document.querySelector('.cart-toggle-value');
 let value = 0;
 
 plus.addEventListener('click', function() {
@@ -27,9 +27,9 @@ minus.addEventListener('click', function() {
 
 
 // Mobile menu 
-let mobileMenu = document.querySelector('.mobile-menu');
-let closeBtn = document.querySelector('.close-btn');
-let navList = document.querySelector('.nav-list');
+const mobileMenu = document.querySelector('.mobile-menu');
+const closeBtn = document.querySelector('.close-btn');
+const navList = document.querySelector('.nav-list');
 
 mobileMenu.addEventListener('click', function() {
   navList.classList.add('nav-open-nav-list')
@@ -42,8 +42,21 @@ closeBtn.addEventListener('click', function() {
 })
 
 
+// Slideshow Desktop 
+let thumbnailList = document.querySelectorAll('.slideshow-thumbnail');
+let slideshowImages = document.querySelectorAll('.slideshow-product');
 
+thumbnailList.forEach((thumbnail, index) => {
+  thumbnail.addEventListener('click', function() {
+    // add active class to thumnbail
+    thumbnailList.forEach(thumb => thumb.classList.remove('active')); 
+    this.classList.add('active');
 
+    // show corresponding slideshow image 
+    slideshowImages.forEach(img => img.classList.remove('show'));
+    slideshowImages[index].classList.add('show');
+  })
+})
 
 
 
@@ -54,8 +67,8 @@ closeBtn.addEventListener('click', function() {
   mobile menu show/hide (or maybe I want to do transform instead). XX
 
   slideshow DESKTOP: 
-    - remove active class from all thumnbnails + add active class to currently selected thumbnail 
-    - switch big picture on click of thumbnail. 
+    - remove active class from all thumnbnails + add active class to currently selected thumbnail XX
+    - switch big picture on click of thumbnail. XX
   slideshow MOBILE: 
     - prev button makes slideshow display prev img. 
     - next button makes slideshow display next img. 
@@ -77,3 +90,17 @@ closeBtn.addEventListener('click', function() {
     -> maybe leave this till last. 
 
 */
+
+/* Notes: 
+How to do img slider by changing the img url instead of adding 'show' classes to the img. 
+let slideshowImageUrls = [
+  './images/image-product-1.jpg', 
+  './images/image-product-2.jpg', 
+  './images/image-product-3.jpg', 
+  './images/image-product-4.jpg', 
+]
+
+inside the thumbnail event listener add the following (replacing the add/show slideshow image code): 
+  slideshowImage[0].src = slideshowImageUrls[index];
+ 
+*/ 
