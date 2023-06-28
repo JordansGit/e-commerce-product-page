@@ -22,7 +22,9 @@
   .cart-empty {
     display: flex;
     align-items: center;
-    height: calc(100% - 80px);
+    justify-content: center;
+    //height: calc(100% - 80px);
+    height: 175px;
   }
 
   .cart-body {

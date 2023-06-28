@@ -164,6 +164,9 @@ html {
     border-bottom: 4px solid var(--orange);
     z-index: unset;
   }
+  .nav-open-nav-list, .nav-open-body {
+    display: none;
+  }
 }
 .nav-open-nav-list {
   display: flex;
@@ -213,7 +216,8 @@ html {
 .shopping-cart .cart-empty {
   display: flex;
   align-items: center;
-  height: calc(100% - 80px);
+  justify-content: center;
+  height: 175px;
 }
 .shopping-cart .cart-body {
   padding: 1.5em;

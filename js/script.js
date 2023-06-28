@@ -11,6 +11,7 @@ cartIcon.addEventListener('click', function() {
 const plus = document.querySelector('.cart-toggle-plus');
 const minus = document.querySelector('.cart-toggle-minus');
 const displayValue = document.querySelector('.cart-toggle-value');
+const cartIconCount = document.querySelector('.shopping-cart-icon-count');
 let value = 0;
 
 plus.addEventListener('click', function() {
@@ -48,7 +49,7 @@ const slideshowImages = document.querySelectorAll('.slideshow-product');
 let currentSlide = 0;
 
 //function
-let showImage = function() {
+function showImage() {
   slideshowImages.forEach(img => img.classList.remove('show'));
   slideshowImages[currentSlide].classList.add('show');
 }
@@ -88,6 +89,80 @@ prev.addEventListener('click', function() {
 })
 
 
+// Add To Cart Button 
+const addToBtn = document.querySelector('.cart-add-to-btn');
+const cartItemQuantityDisplay = document.querySelector('.cart-item-quantity');
+const totalCostDisplay = document.querySelector('.cart-total-cost');
+let totalCost = Number(totalCostDisplay.innerText); // we can change this to 0 once we update 
+let itemQuantity = Number(cartIconCount.innerText);
+const cartBodyDisplay = document.querySelector('.cart-body');
+const cartEmptyDisplay = document.querySelector('.cart-empty');
+let isCartEmpty = true;
+
+// function to calculate total cost 
+function calcTotalCost() {
+  let itemCost = 125;
+  totalCost = itemCost * itemQuantity;
+
+  totalCostDisplay.innerText = `\$${totalCost}.00`
+  if (itemQuantity > 0) {
+    isCartEmpty = false;
+  }
+}
+
+// function to display empty code if item quanitiy = 0, or display cart-body if display >= 1;. 
+function displayCart() {
+  if (itemQuantity === 0) {
+    cartBodyDisplay.classList.add('hide');
+    cartEmptyDisplay.classList.remove('hide');  
+  } else {
+    cartBodyDisplay.classList.remove('hide');
+    cartEmptyDisplay.classList.add('hide');  
+  }
+}
+
+function resetToggleValue() {
+  value = 0;
+  displayValue.innerText = value;
+}
+
+addToBtn.addEventListener('click', function() {
+  itemQuantity += value;
+  cartIconCount.innerText = itemQuantity;
+
+  cartItemQuantityDisplay.innerText = itemQuantity;
+
+  if (isCartEmpty) {
+    console.log("displayCart is running");
+    displayCart();
+  }
+  calcTotalCost();
+
+  // if cart show = false, show class. 
+  if (!shoppingCart.classList.contains('show')) {
+    shoppingCart.classList.add('show');
+  }
+  
+  resetToggleValue()
+})
+
+
+// Cart Delete 
+const cartDelete = document.querySelector('.cart-delete');
+
+cartDelete.addEventListener('click', function() {
+  // Reset values
+  itemQuantity = 0;
+  cartIconCount.innerText = itemQuantity;
+  cartItemQuantityDisplay.innerText = itemQuantity;
+  calcTotalCost();
+
+  // Display empty html 
+  displayCart();
+
+  isCartEmpty = true;
+})
+
 
 /* To Do 
   shopping cart show/display onclick XX 
@@ -100,22 +175,23 @@ prev.addEventListener('click', function() {
   slideshow MOBILE: 
     - prev button makes slideshow display prev img. XX
     - next button makes slideshow display next img. XX
+
+  add to cart button: 
+    adds current number of selected item to cart. XX
+    updates cart-icon number XX
+    updates quantity + total cost in cart XX
+
+  shopping cart delete button: XX
+    reset shopping cart values. XX
+    display the empty html code block XX
+
+  add to cart: 
+    if shopping cart = 0, display empty html code block  XX 
+    else display the other code block. XX
+
   slideshow modal: 
     - popup modal for big image. 
     - same functionality as desktop slideshow. 
-
-  add to cart button: 
-    adds current number of selected item to cart. 
-    updates cart-icon number 
-    updates quantity + total cost in cart 
-
-  shopping cart delete button: 
-    delete's shopping cart. 
-
-  maybe like react: 
-    if shopping cart number = 1 or more, display (the shoes),
-    if it's empty (or 0), display the empty text html code instead. 
-    -> maybe leave this till last. 
 
 */
 
@@ -136,4 +212,10 @@ the thumbnail doesn't update the currently selected main image on page load.
 I can explore this later. either: 
   reset image current slide to 0 when page goes from 819px or below to 820+px. 
   or change thumbnail code to update value. 
+
+-----------------------
+the isCartEmpty function makes it so the function doesn't keep running if the cart is not empty. 
+if the cart already has 1 item in it and we add another, we don't need to run the if(cart ===0) {display empty} function, every time we click the addToBtn. 
+for performance.
+it'll probably make the code more harder to read when I try to re-read it back. 
 */ 
