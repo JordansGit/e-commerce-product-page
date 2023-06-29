@@ -44,13 +44,15 @@ closeBtn.addEventListener('click', function() {
 
 
 // Slideshow Desktop 
-const thumbnailList = document.querySelectorAll('.slideshow-thumbnail');
+const ogThumbnailList = document.querySelectorAll('.og-slideshow-thumbnail');
 const ogSlideshowImages = document.querySelectorAll('.og-slideshow-product');
 let currentSlide = 0;
 
 const modal = document.querySelector('.modal');
 const modalSlideshowImages = document.querySelectorAll('.modal-slideshow-product');
+const modalThumbnailList = document.querySelectorAll('.modal-slideshow-thumbnail');
 
+const thumbnailGroup = [ogThumbnailList, modalThumbnailList];
 
 //function
 function showImage(slideshowImages) {
@@ -59,22 +61,27 @@ function showImage(slideshowImages) {
 }
 
 //event listener 
-thumbnailList.forEach((thumbnail, index) => {
-  thumbnail.addEventListener('click', function() {
-    // add active class to thumnbail
-    thumbnailList.forEach(thumb => thumb.classList.remove('active')); 
-    this.classList.add('active');
-
-    // show corresponding slideshow image 
-    currentSlide = index;
-    if (modal.classList.contains('show-flex')) {
-      showImage(modalSlideshowImages)
-    } else {
-      showImage(ogSlideshowImages);
-    }
-    console.log(currentSlide);
+thumbnailGroup.forEach(thumbnailList => {
+  thumbnailList.forEach((thumbnail, index) => {
+    thumbnail.addEventListener('click', function() {
+      // add active class to thumnbail
+      thumbnailList.forEach(thumb => thumb.classList.remove('active')); 
+      this.classList.add('active');
+  
+      // show corresponding slideshow image 
+      currentSlide = index;
+      console.log(currentSlide);
+  
+      if (modal.classList.contains('show-flex')) {
+        showImage(modalSlideshowImages)
+      } else {
+        showImage(ogSlideshowImages);
+      }
+      console.log(currentSlide);
+    })
   })
 })
+
 
 
 // Slideshow Mobile 
@@ -229,6 +236,7 @@ ogSlideshowImages.forEach(img => {
 
   Refactor code: 
     - the code seems a bit janky now w/ the modal. the html of it, the css, the js the probably runs on both slideshow images when I click on modal thumbnails, etc. 
+    - on my thumbnails I have slideshow-thumbnail and .slideshow-thumbnail wrapper. it's pointless to have these classes seperate. put all code in 1 class. 
     - in my slideshow code, I have the prev/next and thumbnails working seperately, so it doesn't work properly on the modal. need to change this. 
 
     --> the problem is my modal slider is regestering the currentSlide as 4,5,6,7 instead of 0,1,2,3. 

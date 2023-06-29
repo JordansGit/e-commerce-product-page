@@ -30,3 +30,5 @@ Ecommerce Product Page
 ### What I learned
 
 SCSS. Nesting code with scss, creating mixins for reusable code, using partials to structure layout. 
+JS: 
+- how to get a slideshow and a modal slideshow to work without repeating js code. 
