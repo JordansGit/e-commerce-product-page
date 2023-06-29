@@ -113,6 +113,8 @@ next.forEach(nextBtn => {
     }
     if (modal.classList.contains('show-flex')) {
       showImage(modalSlideshowImages)
+      modalThumbnailList.forEach(thumb => thumb.classList.remove('active')); // repeated code. 
+      modalThumbnailList[currentSlide].classList.add('active'); // repeated code. 
     } else {
       showImage(ogSlideshowImages);
     }
@@ -129,6 +131,8 @@ prev.forEach(prevBtn => {
     }
     if (modal.classList.contains('show-flex')) {
       showImage(modalSlideshowImages)
+      modalThumbnailList.forEach(thumb => thumb.classList.remove('active')); // repeated code. 
+      modalThumbnailList[currentSlide].classList.add('active'); // repeated code. 
     } else {
       showImage(ogSlideshowImages);
     }
@@ -244,7 +248,7 @@ cartDelete.addEventListener('click', function() {
   slideshow modal: 
     - popup modal for big image. XX
     - same functionality as desktop slideshow. XX
-    - when clicking next and prev buttons, update the correct active thumbnail. 
+    - when clicking next and prev buttons, update the correct active thumbnail. XX 
 
   Refactor code: 
     - the code seems a bit janky now w/ the modal. the html of it, the css, the js the probably runs on both slideshow images when I click on modal thumbnails, etc. 
