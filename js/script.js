@@ -43,7 +43,7 @@ closeBtn.addEventListener('click', function() {
 })
 
 
-// Slideshow Desktop 
+// Slideshow Desktop & Modal Slideshow 
 const ogThumbnailList = document.querySelectorAll('.og-slideshow-thumbnail');
 const ogSlideshowImages = document.querySelectorAll('.og-slideshow-product');
 let currentSlide = 0;
@@ -82,37 +82,60 @@ thumbnailGroup.forEach(thumbnailList => {
   })
 })
 
+// Modal / Lightbox Gallery 
+const modalClose = document.querySelector('.modal-close');
+
+// close slideshow 
+modalClose.addEventListener('click', function() {
+  modal.classList.remove('show-flex');
+})
+
+// popup modal when clicking on image. 
+ogSlideshowImages.forEach(img => {
+  img.addEventListener('click', function() {
+    console.log('clicked');
+    modal.classList.add('show-flex');
+  })
+})
+
 
 
 // Slideshow Mobile 
-const next = document.querySelector('.slideshow-next');
-const prev = document.querySelector('.slideshow-prev');
+const next = document.querySelectorAll('.slideshow-next');
+const prev = document.querySelectorAll('.slideshow-prev');
 
-next.addEventListener('click', function() {
-  currentSlide++;
-  if (currentSlide > 3) {
-    currentSlide = 0;
-  }
-  if (modal.classList.contains('show-flex')) {
-    showImage(modalSlideshowImages)
-  } else {
-    showImage(ogSlideshowImages);
-  }
-  console.log(currentSlide);
+next.forEach(nextBtn => {
+  nextBtn.addEventListener('click', function() {
+    console.log("next clicked");
+    currentSlide++;
+    if (currentSlide > 3) {
+      currentSlide = 0;
+    }
+    if (modal.classList.contains('show-flex')) {
+      showImage(modalSlideshowImages)
+    } else {
+      showImage(ogSlideshowImages);
+    }
+    console.log(currentSlide);
+  })  
 })
 
-prev.addEventListener('click', function() {
-  currentSlide--;
-  if (currentSlide < 0) {
-    currentSlide = 3;
-  }
-  if (modal.classList.contains('show-flex')) {
-    showImage(modalSlideshowImages)
-  } else {
-    showImage(ogSlideshowImages);
-  }
-  console.log(currentSlide);
+prev.forEach(prevBtn => {
+  prevBtn.addEventListener('click', function() {
+    console.log("prev clicked");
+    currentSlide--;
+    if (currentSlide < 0) {
+      currentSlide = 3;
+    }
+    if (modal.classList.contains('show-flex')) {
+      showImage(modalSlideshowImages)
+    } else {
+      showImage(ogSlideshowImages);
+    }
+    console.log(currentSlide);
+  })
 })
+
 
 
 // Add To Cart Button 
@@ -190,19 +213,7 @@ cartDelete.addEventListener('click', function() {
 })
 
 
-// Modal / Lightbox Gallery 
-const modalClose = document.querySelector('.modal-close');
 
-modalClose.addEventListener('click', function() {
-  modal.classList.remove('show-flex');
-})
-
-ogSlideshowImages.forEach(img => {
-  img.addEventListener('click', function() {
-    console.log('clicked');
-    modal.classList.add('show-flex');
-  })
-})
 
 
 /* To Do 
@@ -231,8 +242,9 @@ ogSlideshowImages.forEach(img => {
     else display the other code block. XX
 
   slideshow modal: 
-    - popup modal for big image. 
-    - same functionality as desktop slideshow. 
+    - popup modal for big image. XX
+    - same functionality as desktop slideshow. XX
+    - when clicking next and prev buttons, update the correct active thumbnail. 
 
   Refactor code: 
     - the code seems a bit janky now w/ the modal. the html of it, the css, the js the probably runs on both slideshow images when I click on modal thumbnails, etc. 
