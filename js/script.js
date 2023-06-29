@@ -45,11 +45,15 @@ closeBtn.addEventListener('click', function() {
 
 // Slideshow Desktop 
 const thumbnailList = document.querySelectorAll('.slideshow-thumbnail');
-const slideshowImages = document.querySelectorAll('.slideshow-product');
+const ogSlideshowImages = document.querySelectorAll('.og-slideshow-product');
 let currentSlide = 0;
 
+const modal = document.querySelector('.modal');
+const modalSlideshowImages = document.querySelectorAll('.modal-slideshow-product');
+
+
 //function
-function showImage() {
+function showImage(slideshowImages) {
   slideshowImages.forEach(img => img.classList.remove('show'));
   slideshowImages[currentSlide].classList.add('show');
 }
@@ -63,7 +67,12 @@ thumbnailList.forEach((thumbnail, index) => {
 
     // show corresponding slideshow image 
     currentSlide = index;
-    showImage();
+    if (modal.classList.contains('show-flex')) {
+      showImage(modalSlideshowImages)
+    } else {
+      showImage(ogSlideshowImages);
+    }
+    console.log(currentSlide);
   })
 })
 
@@ -77,7 +86,12 @@ next.addEventListener('click', function() {
   if (currentSlide > 3) {
     currentSlide = 0;
   }
-  showImage()
+  if (modal.classList.contains('show-flex')) {
+    showImage(modalSlideshowImages)
+  } else {
+    showImage(ogSlideshowImages);
+  }
+  console.log(currentSlide);
 })
 
 prev.addEventListener('click', function() {
@@ -85,7 +99,12 @@ prev.addEventListener('click', function() {
   if (currentSlide < 0) {
     currentSlide = 3;
   }
-  showImage()
+  if (modal.classList.contains('show-flex')) {
+    showImage(modalSlideshowImages)
+  } else {
+    showImage(ogSlideshowImages);
+  }
+  console.log(currentSlide);
 })
 
 
@@ -164,6 +183,21 @@ cartDelete.addEventListener('click', function() {
 })
 
 
+// Modal / Lightbox Gallery 
+const modalClose = document.querySelector('.modal-close');
+
+modalClose.addEventListener('click', function() {
+  modal.classList.remove('show-flex');
+})
+
+ogSlideshowImages.forEach(img => {
+  img.addEventListener('click', function() {
+    console.log('clicked');
+    modal.classList.add('show-flex');
+  })
+})
+
+
 /* To Do 
   shopping cart show/display onclick XX 
   button increment and decrement to change the number value. XX 
@@ -192,6 +226,17 @@ cartDelete.addEventListener('click', function() {
   slideshow modal: 
     - popup modal for big image. 
     - same functionality as desktop slideshow. 
+
+  Refactor code: 
+    - the code seems a bit janky now w/ the modal. the html of it, the css, the js the probably runs on both slideshow images when I click on modal thumbnails, etc. 
+    - in my slideshow code, I have the prev/next and thumbnails working seperately, so it doesn't work properly on the modal. need to change this. 
+
+    --> the problem is my modal slider is regestering the currentSlide as 4,5,6,7 instead of 0,1,2,3. 
+        that's because I've copied and pasted the slider, so now my slideshow images has 8 img's (since og 4 was copied, x2 = 8)
+        I'd have to use specificity by adding a class above called og-slideshow slideshow-product for og slideshow and another class called modal-slideshow. 
+    -- if I think about it, I don't want the bg slideshow to change when I change the modal slideshow. so that means I need 2 different slideshows. 
+        -- the same classes for the same design. 
+        -- but different ID's for 2 seperate slideshow events in javascript. 
 
 */
 

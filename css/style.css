@@ -475,6 +475,59 @@ html {
     flex-shrink: 0;
   }
 }
+.modal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal .modal-close {
+  margin-left: auto;
+  margin-bottom: 1.5em;
+  transform: scale(1.6);
+}
+.modal .modal-close path {
+  fill: var(--white);
+}
+.modal .modal-el {
+  display: block !important;
+}
+.modal .slideshow .slideshow-image-container {
+  position: relative;
+}
+.modal .slideshow .slideshow-image-container .slideshow-product {
+  max-width: 550px;
+}
+.modal .slideshow .slideshow-image-container .slideshow-prev, .modal .slideshow .slideshow-image-container .slideshow-next {
+  padding: 1.1em 1.3em;
+}
+.modal .slideshow .slideshow-image-container .slideshow-prev {
+  left: -1.8em;
+  padding-right: 1.5em;
+}
+.modal .slideshow .slideshow-image-container .slideshow-next {
+  right: -1.8em;
+  padding-left: 1.5em;
+}
+.modal .slideshow .slideshow-thumbnails {
+  margin: 0 auto;
+}
+
+.slideshow-product, .modal-close {
+  cursor: pointer;
+}
+
+.show-flex {
+  display: flex !important;
+}
+
 /* Layout */
 /* General */
 body {

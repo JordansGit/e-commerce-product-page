@@ -8,14 +8,11 @@ Difficulty: Level 3 (Intermediate)
 
 ### The challenge
 
-Users should be able to:
-
-- View the optimal layout for the site depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Open a lightbox gallery by clicking on the large product image
-- Switch the large product image by clicking on the small thumbnail images
-- Add items to the cart
-- View the cart and remove items from it
+Ecommerce Product Page
+- Image slider w/ thumbnails for desktop, prev and next buttons for mobile. 
+- Lightbox gallery. 
+- Choose quantity of items and add them to cart. 
+- View Cart, remove items from cart. 
 
 ### Links
 

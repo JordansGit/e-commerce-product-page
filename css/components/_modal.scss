@@ -1,0 +1,64 @@
+.modal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  //background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  .modal-close {
+    margin-left: auto;
+    margin-bottom: 1.5em;
+    transform: scale(1.6);
+    
+    path {
+      fill: var(--white);
+    };
+  }
+  .modal-el {
+    display: block !important; // overwrite the default display:none for [slideshow thumbnails + prev & next buttons] on media queries, for the modal. 
+  }
+
+  .slideshow {
+    .slideshow-image-container {
+      position: relative;
+
+      .slideshow-product {
+        max-width: 550px;
+      }
+
+      .slideshow-prev, .slideshow-next {
+        padding: 1.1em 1.3em;
+      }
+
+      .slideshow-prev {
+        left: -1.8em;
+        padding-right: 1.5em;
+      }
+      .slideshow-next {
+        right: -1.8em;
+        padding-left: 1.5em;
+      }
+    }
+
+    .slideshow-thumbnails {
+      margin: 0 auto;
+    }
+  }
+
+
+}
+
+.slideshow-product, .modal-close {
+  cursor: pointer;
+}
+
+.show-flex {
+  display: flex !important;
+}
