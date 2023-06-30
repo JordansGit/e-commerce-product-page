@@ -25,6 +25,10 @@ body {
   display: block !important;
 }
 
+.show-flex {
+  display: flex !important;
+}
+
 .active {
   border: 2px solid var(--orange);
 
@@ -36,6 +40,6 @@ body {
   }
 }
 
-.nav-link, .shopping-cart-icon, .account-avatar, .slideshow-thumbnail, .cart-toggle-minus, .cart-toggle-plus, .cart-add-to-btn, .mobile-menu, .close-btn, .slideshow-prev, .slideshow-next, .cart-checkout-btn, .cart-delete {
+.nav-link, .shopping-cart-icon, .account-avatar, .slideshow-thumbnail, .cart-toggle-minus, .cart-toggle-plus, .cart-add-to-btn, .mobile-menu, .close-btn, .slideshow-prev, .slideshow-next, .cart-checkout-btn, .cart-delete, .slideshow-product, .modal-close {
   cursor: pointer;
 }

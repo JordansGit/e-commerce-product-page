@@ -43,24 +43,27 @@ closeBtn.addEventListener('click', function() {
 })
 
 
-// Slideshow Desktop & Modal Slideshow 
+// Slideshow for Desktop, Mobile & Modal Slideshow 
 const ogThumbnailList = document.querySelectorAll('.og-slideshow-thumbnail');
 const ogSlideshowImages = document.querySelectorAll('.og-slideshow-product');
-let currentSlide = 0;
-
 const modal = document.querySelector('.modal');
 const modalSlideshowImages = document.querySelectorAll('.modal-slideshow-product');
 const modalThumbnailList = document.querySelectorAll('.modal-slideshow-thumbnail');
-
 const thumbnailGroup = [ogThumbnailList, modalThumbnailList];
 
-//function
+const modalClose = document.querySelector('.modal-close');
+const next = document.querySelectorAll('.slideshow-next');
+const prev = document.querySelectorAll('.slideshow-prev');
+
+let currentSlide = 0;
+
+// function to show big image. 
 function showImage(slideshowImages) {
   slideshowImages.forEach(img => img.classList.remove('show'));
   slideshowImages[currentSlide].classList.add('show');
 }
 
-//event listener 
+// Thumbnail event listener 
 thumbnailGroup.forEach(thumbnailList => {
   thumbnailList.forEach((thumbnail, index) => {
     thumbnail.addEventListener('click', function() {
@@ -70,27 +73,22 @@ thumbnailGroup.forEach(thumbnailList => {
   
       // show corresponding slideshow image 
       currentSlide = index;
-      console.log(currentSlide);
   
       if (modal.classList.contains('show-flex')) {
         showImage(modalSlideshowImages)
       } else {
         showImage(ogSlideshowImages);
       }
-      console.log(currentSlide);
     })
   })
 })
 
-// Modal / Lightbox Gallery 
-const modalClose = document.querySelector('.modal-close');
-
-// close slideshow 
+// Modal - close slideshow 
 modalClose.addEventListener('click', function() {
   modal.classList.remove('show-flex');
 })
 
-// popup modal when clicking on image. 
+// Modal - open modal when clicking on image. 
 ogSlideshowImages.forEach(img => {
   img.addEventListener('click', function() {
     console.log('clicked');
@@ -99,11 +97,7 @@ ogSlideshowImages.forEach(img => {
 })
 
 
-
-// Slideshow Mobile 
-const next = document.querySelectorAll('.slideshow-next');
-const prev = document.querySelectorAll('.slideshow-prev');
-
+// Next Button 
 next.forEach(nextBtn => {
   nextBtn.addEventListener('click', function() {
     console.log("next clicked");
@@ -122,6 +116,7 @@ next.forEach(nextBtn => {
   })  
 })
 
+// Prev Button 
 prev.forEach(prevBtn => {
   prevBtn.addEventListener('click', function() {
     console.log("prev clicked");
@@ -146,10 +141,10 @@ prev.forEach(prevBtn => {
 const addToBtn = document.querySelector('.cart-add-to-btn');
 const cartItemQuantityDisplay = document.querySelector('.cart-item-quantity');
 const totalCostDisplay = document.querySelector('.cart-total-cost');
-let totalCost = Number(totalCostDisplay.innerText); // we can change this to 0 once we update 
-let itemQuantity = Number(cartIconCount.innerText);
 const cartBodyDisplay = document.querySelector('.cart-body');
 const cartEmptyDisplay = document.querySelector('.cart-empty');
+let totalCost = Number(totalCostDisplay.innerText); // we can change this to 0 once we update 
+let itemQuantity = Number(cartIconCount.innerText);
 let isCartEmpty = true;
 
 // function to calculate total cost 
@@ -174,15 +169,16 @@ function displayCart() {
   }
 }
 
+// function to reset the cart toggle value (quantity user has chosen to add to cart) to 0 after pressing add to cart. 
 function resetToggleValue() {
   value = 0;
   displayValue.innerText = value;
 }
 
+// Event listener 
 addToBtn.addEventListener('click', function() {
   itemQuantity += value;
   cartIconCount.innerText = itemQuantity;
-
   cartItemQuantityDisplay.innerText = itemQuantity;
 
   if (isCartEmpty) {
@@ -191,7 +187,7 @@ addToBtn.addEventListener('click', function() {
   }
   calcTotalCost();
 
-  // if cart show = false, show class. 
+  // if cart is not already showing when addToBtn is pressed, show cart. 
   if (!shoppingCart.classList.contains('show')) {
     shoppingCart.classList.add('show');
   }
@@ -218,73 +214,12 @@ cartDelete.addEventListener('click', function() {
 
 
 
-
-
 /* To Do 
-  shopping cart show/display onclick XX 
-  button increment and decrement to change the number value. XX 
-  mobile menu show/hide (or maybe I want to do transform instead). XX
-
-  slideshow DESKTOP: 
-    - remove active class from all thumnbnails + add active class to currently selected thumbnail XX
-    - switch big picture on click of thumbnail. XX
-  slideshow MOBILE: 
-    - prev button makes slideshow display prev img. XX
-    - next button makes slideshow display next img. XX
-
-  add to cart button: 
-    adds current number of selected item to cart. XX
-    updates cart-icon number XX
-    updates quantity + total cost in cart XX
-
-  shopping cart delete button: XX
-    reset shopping cart values. XX
-    display the empty html code block XX
-
-  add to cart: 
-    if shopping cart = 0, display empty html code block  XX 
-    else display the other code block. XX
-
-  slideshow modal: 
-    - popup modal for big image. XX
-    - same functionality as desktop slideshow. XX
-    - when clicking next and prev buttons, update the correct active thumbnail. XX 
-
-  Refactor code: 
-    - the code seems a bit janky now w/ the modal. the html of it, the css, the js the probably runs on both slideshow images when I click on modal thumbnails, etc. 
-    - on my thumbnails I have slideshow-thumbnail and .slideshow-thumbnail wrapper. it's pointless to have these classes seperate. put all code in 1 class. 
-    - in my slideshow code, I have the prev/next and thumbnails working seperately, so it doesn't work properly on the modal. need to change this. 
-
-    --> the problem is my modal slider is regestering the currentSlide as 4,5,6,7 instead of 0,1,2,3. 
-        that's because I've copied and pasted the slider, so now my slideshow images has 8 img's (since og 4 was copied, x2 = 8)
-        I'd have to use specificity by adding a class above called og-slideshow slideshow-product for og slideshow and another class called modal-slideshow. 
-    -- if I think about it, I don't want the bg slideshow to change when I change the modal slideshow. so that means I need 2 different slideshows. 
-        -- the same classes for the same design. 
-        -- but different ID's for 2 seperate slideshow events in javascript. 
-
-*/
-
-/* Notes: 
-How to do img slider by changing the img url instead of adding 'show' classes to the img. 
-let slideshowImageUrls = [
-  './images/image-product-1.jpg', 
-  './images/image-product-2.jpg', 
-  './images/image-product-3.jpg', 
-  './images/image-product-4.jpg', 
-]
-
-inside the thumbnail event listener add the following (replacing the add/show slideshow image code): 
-  slideshowImage[0].src = slideshowImageUrls[index];
- 
------------------------
-the thumbnail doesn't update the currently selected main image on page load. 
-I can explore this later. either: 
-  reset image current slide to 0 when page goes from 819px or below to 820+px. 
-  or change thumbnail code to update value. 
-
------------------------
-the isCartEmpty function makes it so the function doesn't keep running if the cart is not empty. 
-if the cart already has 1 item in it and we add another, we don't need to run the if(cart ===0) {display empty} function, every time we click the addToBtn. 
-for performance.
-it'll probably make the code more harder to read when I try to re-read it back. 
+slideshow modal: 
+  - refactor: js- where I've commented // repeated code. 
+  - fix: when clicking on my slideshow, the same img is the 1 that appears on the modal. 
+  - bonus: add and minus btns on shopping cart. 
+  - bonus: when modal open, click anywhere outside of modal to close modal. 
+  - bonus- CSS: 
+    - add hover effects to delete icon, prev & next buttons, modal close icon. mobile close btn, mobile nav links. 
 */ 

@@ -1,0 +1,127 @@
+/* To do on another project: 
+SCSS: 
+- maybe add more variables, @each to map over lists, for loops, if else logic.... But I'm thinking maybe just leave this for another project. 
+- watch this tut, then implement similar changes into my project. 
+  https://www.youtube.com/watch?v=aoQ6S1a32j8
+
+*/ 
+
+
+
+
+/* Some SCSS Notes: 
+nesting makes it a whole lot more readable. 
+However, a lot of classes that previously didn't need nesting now need nesting e.g. media queries. line 427 for slideshow-product @ min-width: 820px. previously I wrote it like this: 
+@media (min-width: 820px) {
+  .slideshow-product {
+    height: initial;
+  }
+}
+now I have to write it like this: 
+@media (min-width: 820px) {
+  .slideshow .slideshow-image .slideshow-product {
+    height: initial;
+  }
+}
+because it's nested in the non-media query ver, the media query ver needs to be nested. 
+- I could try putting the media query inside the nested element. e.g. 
+    .slideshow-image {
+      margin-bottom: 2.2em;
+  
+      .slideshow-product {
+        max-width: 450px;
+        border-radius: 15px;
+        height: 300px;
+      }
+      @media (min-width: 820px) {
+        .slideshow-product {
+          height: initial;
+        }
+      }
+    }
+
+I don't need to do this for .slideshow-thumbnails, with the difference being the media query is (max-width: ...) not min-width
+
+*/ 
+
+
+
+
+/* JS Notes: 
+How to do img slider by changing the img url instead of adding 'show' classes to the img. 
+let slideshowImageUrls = [
+  './images/image-product-1.jpg', 
+  './images/image-product-2.jpg', 
+  './images/image-product-3.jpg', 
+  './images/image-product-4.jpg', 
+]
+
+inside the thumbnail event listener add the following (replacing the add/show slideshow image code): 
+  slideshowImage[0].src = slideshowImageUrls[index];
+ 
+-----------------------
+the thumbnail doesn't update the currently selected main image on page load. 
+I can explore this later. either: 
+  reset image current slide to 0 when page goes from 819px or below to 820+px. 
+  or change thumbnail code to update value. 
+
+-----------------------
+the isCartEmpty function makes it so the function doesn't keep running if the cart is not empty. 
+if the cart already has 1 item in it and we add another, we don't need to run the if(cart ===0) {display empty} function, every time we click the addToBtn. 
+for performance.
+it'll probably make the code more harder to read when I try to re-read it back. 
+*/ 
+
+
+
+
+
+
+/* JS Junk: 
+   To Do 
+  shopping cart show/display onclick XX 
+  button increment and decrement to change the number value. XX 
+  mobile menu show/hide (or maybe I want to do transform instead). XX
+
+  slideshow DESKTOP: 
+    - remove active class from all thumnbnails + add active class to currently selected thumbnail XX
+    - switch big picture on click of thumbnail. XX
+  slideshow MOBILE: 
+    - prev button makes slideshow display prev img. XX
+    - next button makes slideshow display next img. XX
+
+  add to cart button: 
+    adds current number of selected item to cart. XX
+    updates cart-icon number XX
+    updates quantity + total cost in cart XX
+
+  shopping cart delete button: XX
+    reset shopping cart values. XX
+    display the empty html code block XX
+
+  add to cart: 
+    if shopping cart = 0, display empty html code block  XX 
+    else display the other code block. XX
+
+  slideshow modal: 
+    - popup modal for big image. XX
+    - same functionality as desktop slideshow. XX
+    - when clicking next and prev buttons, update the correct active thumbnail. XX 
+    - fix: when clicking on my slideshow, the same img is the 1 that appears on the modal. 
+    - bonus: add and minus btns on shopping cart. 
+
+  Refactor code: 
+    - the code seems a bit janky now w/ the modal. the html of it, the css, the js the probably runs on both slideshow images when I click on modal thumbnails, etc. 
+    - on my thumbnails I have slideshow-thumbnail and .slideshow-thumbnail wrapper. it's pointless to have these classes seperate. put all code in 1 class. 
+    - in my slideshow code, I have the prev/next and thumbnails working seperately, so it doesn't work properly on the modal. need to change this. 
+
+    --> the problem is my modal slider is regestering the currentSlide as 4,5,6,7 instead of 0,1,2,3. 
+        that's because I've copied and pasted the slider, so now my slideshow images has 8 img's (since og 4 was copied, x2 = 8)
+        I'd have to use specificity by adding a class above called og-slideshow slideshow-product for og slideshow and another class called modal-slideshow. 
+    -- if I think about it, I don't want the bg slideshow to change when I change the modal slideshow. so that means I need 2 different slideshows. 
+        -- the same classes for the same design. 
+        -- but different ID's for 2 seperate slideshow events in javascript. 
+
+*/
+
+
